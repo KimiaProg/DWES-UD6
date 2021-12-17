@@ -46,9 +46,11 @@ class Persona{
     public function getAltura(){
         return $this->altura;
     }
-
     public function mostrar(){
         echo "Nombre: " . $this->nombre . " DNI: " . $this->dni . " Sexo: " . $this->sexo . " Peso: " . $this->peso . " altura: " . $this->altura;
+    }
+    public function __toString(){
+        return "Nombre: " . $this->nombre . " DNI: " . $this->dni . " Sexo: " . $this->sexo . " Peso: " . $this->peso . " altura: " . $this->altura;
     }
 
 }
