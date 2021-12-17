@@ -14,7 +14,7 @@
     $Yo = new Persona("Kimia", "33", "M", "50", "160");
     echo $Yo . "<br>";
     $YoTrabajador = new Trabajador("Kimia", "33", "M", "50", "160", "Deloitte.");
-    echo $YoTrabajador->__toString();
+    echo $YoTrabajador;
     ?>
 </body>
 
