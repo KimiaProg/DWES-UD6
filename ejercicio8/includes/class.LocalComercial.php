@@ -12,10 +12,19 @@ class LocalComercial extends Local{
         parent::__construct($ciudad,$calle,$numPlatantas,$dimensiones,$area);
 
     }
-    
+    public function __set($name,$value){
+        parent::__set($name,$value);
+        if($name=="razonSocial" || $name=="numLicencia"){
+            if (is_string($value)){
+                $this->$name = $value;
+            }else{
+                echo "Error";
+            }
+        }
+    }
     public function __toString()
     {
-        return "<p><datos del local></p><p>Razón Social: ".$this->razonSocial."<br></p><p>Número de Licencia: ".$this->numLicencia."<br></p>";
+        return "<p>".parent::__toString()."</p><p>Razón Social: ".$this->razonSocial."<br></p><p>Número de Licencia: ".$this->numLicencia."<br></p>";
     }
 
 

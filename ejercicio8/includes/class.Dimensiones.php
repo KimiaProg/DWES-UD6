@@ -19,7 +19,7 @@ class Dimensiones{
 
     public function __set($name, $value)
     {
-        if($value instanceof float && $value >1){
+        if(is_float($value) && $value >1){
             $this->$name = $value;
         }else{
             echo "El valor tiene que ser float y mayor que 1";

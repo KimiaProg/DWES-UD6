@@ -19,7 +19,7 @@ class Local{
     public function __get($name)
     {
         if($name== "area"){
-            return $this->name->ancho * $this->name->largo; 
+            return $this->dimensiones->ancho * $this->dimensiones->largo; 
         }else{
             return $this->$name;
         }
@@ -34,20 +34,20 @@ class Local{
                 echo "Error";
             }
         }else{
-            if($name=="ciudad" || $name="calle" ||$name=="razonSocial" || $name=="numLicencia"){
-                if ($value instanceof string){
+            if($name=="ciudad" || $name=="calle" ){
+                if (is_string($value)){
                     $this->$name = $value;
                 }else{
                     echo "Error";
                 }
             }else if($name=="numPlatantas" ){
-                if ($value instanceof int && $value >1 && $value<10){
+                if (is_int($value) && $value >1 && $value<10){
                     $this->$name = $value;
                 }else{
                     echo "Error";
                 }
             }else if($name=="area"){
-                if ($value instanceof float){
+                if (is_float($value)){
                     $this->$name = $value;
                 }else{
                     echo "Error";
@@ -64,7 +64,7 @@ class Local{
     
 
     public function __clone(){
-        return clone $this->dimensiones;
+        $this->dimensiones= clone $this->dimensiones;
     }
 
 }

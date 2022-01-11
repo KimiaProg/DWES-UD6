@@ -7,19 +7,20 @@ class Cine extends LocalComercial{
         $this->aforoSala=$aforoSala;
         parent::__construct($razonSocial,$numLicencia,$ciudad,$calle,$numPlatantas,$dimensiones,$area);
     }
+   
 
-    public function __set($name, $value)
-    {
-        if($value>0 && $value instanceof int){
-            $this->$name = $value;
-        }else{
-            echo "Error";
+    public function __set($name,$value){
+        parent::__set($name,$value);
+       if($name=="aforoSala"){
+            if($value>0 && is_int($value)){
+                $this->$name = $value;
+            }else{
+                echo "Error";
+            }
         }
-         
-    }     
-
+    }
     public function __toString()
     {
-        return "<p><datos del local comercial></p><p>Aforo: ".$this->aforoSala."<br></p>";
+        return "<p>".parent::__toString()."</p><p>Aforo: ".$this->aforoSala."<br></p>";
     }
 }
