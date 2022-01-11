@@ -6,14 +6,16 @@ class Cuadrado extends FiguraGeometrica{
     {
         $this->lado=$lado;
         $this->color=$color;
+        $this->tipo= "cuadrado";
+
 
     }
     public function dibuja(){
-        echo $this->color . " cuadrado";
+        echo $this->color . $this->tipo;
     }
 
     public function area(){
-        return $this->lado*4;
+        return $this->lado* $this->lado;
     }
 }
 

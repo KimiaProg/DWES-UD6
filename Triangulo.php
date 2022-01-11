@@ -8,11 +8,13 @@ class Triangulo extends FiguraGeometrica{
         $this->base=$base;
         $this->altura=$altura;
         $this->color=$color;
+        $this->tipo= "triangulo";
+
 
     }
 
     public function dibuja(){
-        echo $this->color . " triangulo";
+        echo $this->color . $this->tipo;
     }
 
     public function area(){

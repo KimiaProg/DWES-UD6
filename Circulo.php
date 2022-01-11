@@ -7,10 +7,11 @@ class Circulo extends FiguraGeometrica{
     {
         $this->radio=$radio;
         $this->color=$color;
+        $this->tipo= "circulo";
 
     }
     public function dibuja(){
-        echo $this->color . " circulo";
+        echo $this->color . $this->tipo;
     }
 
     public function area(){
