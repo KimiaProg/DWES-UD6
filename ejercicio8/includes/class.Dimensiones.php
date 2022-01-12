@@ -23,8 +23,8 @@ class Dimensiones{
             $this->$name = $value;
         }else{
             echo "El valor tiene que ser float y mayor que 1";
-        }
-                
+            die();
+        }        
     }
 
     public function __toString()
@@ -33,7 +33,5 @@ class Dimensiones{
     }
 
    
-
-    
 
 }
