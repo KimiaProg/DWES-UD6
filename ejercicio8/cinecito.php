@@ -14,4 +14,5 @@ $copia->dimensiones->largo = 60.;
 foreach ($cines as $cine)
    echo $cine . '<br>';
 echo $copia;
+echo $cines[1];
 echo 'Área: ' . $copia->area . ' m2';

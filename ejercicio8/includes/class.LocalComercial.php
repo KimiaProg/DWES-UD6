@@ -7,32 +7,23 @@ class LocalComercial extends Local{
     
     public function __construct($razonSocial,$numLicencia,$ciudad,$calle,$numPlatantas,$dimensiones,$area)
     {
-        $this->razonSocial=$razonSocial;
-        $this->numLicencia=$numLicencia;
-        parent::__construct($ciudad,$calle,$numPlatantas,$dimensiones,$area);
+        if(is_string($razonSocial)&& is_string($numLicencia)){
+            $this->razonSocial=$razonSocial;
+            $this->numLicencia=$numLicencia;
+            parent::__construct($ciudad,$calle,$numPlatantas,$dimensiones,$area);
+        }else{
+            echo "ErrorLocalComercial";
+            die();
+        } 
 
     }
-    public function __set($name,$value){
-        parent::__set($name,$value);
-        if($name=="razonSocial" || $name=="numLicencia"){
-            if (is_string($value)){
-                $this->$name = $value;
-            }else{
-                echo "Error";
-            }
-        }
-    }
+ 
     public function __toString()
     {
         return "<p>".parent::__toString()."</p><p>Razón Social: ".$this->razonSocial."<br></p><p>Número de Licencia: ".$this->numLicencia."<br></p>";
     }
 
-
-
 }
-
-
-
 
 
 
