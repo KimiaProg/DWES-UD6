@@ -8,9 +8,9 @@ function __autoload($name)
 $miV= new Coche("azul",650.,4,2);
 
 $miV->aniadir_Persona(700);
-echo $miV->peso;
-echo $miV->color;
-echo $miV->numero_cadenas_nieve;
+echo $miV->peso . " ";
+echo $miV->color. " ";
+echo $miV->numero_cadenas_nieve. " ";
 
 $miV->repintar("amarillo");
 $miV->aniadir_cadenas_nieve(3);
@@ -22,8 +22,7 @@ $dosRuedas= new DosRuedas("marron",30,40);
 $dosRuedas->aniadir_Persona(2);
 $dosRuedas->poner_gasolina(2000);
 $dosRuedas->color="amarillo";
-$dosRuedas->color= "d";
-Vehiculo::ver_atributos($dosRuedas);
+$dosRuedas->color= "Morado";
 echo $dosRuedas->color;
 echo $dosRuedas->peso;
 

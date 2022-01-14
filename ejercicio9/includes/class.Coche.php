@@ -15,7 +15,13 @@ class Coche extends CuatroRuedas{
     }
 
     public function quitar_cadenas_nieve($num){
-        $this->numero_cadenas_nieve =$this->numero_cadenas_nieve - $num;
+        $n =$this->numero_cadenas_nieve - $num;
+        if($n<0){
+            $this->numero_cadenas_nieve=0;
+        }else{
+            $this->numero_cadenas_nieve=$n;
+
+        }
 
     }
 
