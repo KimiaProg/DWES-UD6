@@ -1,13 +1,15 @@
 <?php
 
-abstract class Vehiculo implements IVehiculo{
+abstract class Vehiculo implements IVehiculo
+{
 
     private string $color;
     private float $peso;
-    protected static $numero_cambio_color=0;
+    protected static $numero_cambio_color = 0;
 
 
-    public function circula(){
+    public function circula()
+    {
         echo "El vehiculo está circulando";
     }
 
@@ -20,43 +22,63 @@ abstract class Vehiculo implements IVehiculo{
 
     public function __set($name, $value)
     {
-        if($name=="color"){
+        if ($name == "color") {
             self::$numero_cambio_color++;
             $this->$name = $value;
-        }elseif($name=="peso"){
-            if($value<=2100){
+        } elseif ($name == "peso") {
+            if ($value <= 2100) {
                 $this->$name = $value;
-            }else{
+            } else {
                 echo "<br>El vehículo tiene más de 2100 kg, así que se le asigna 2100 kg <br>";
                 $this->$name = 2100;
             }
-        }else{
+        } else {
             $this->$name = $value;
         }
-          
     }
 
-    public static function ver_atributos($obj){
-        echo "<br>"." Numero de cambio de color:".self::$numero_cambio_color ."<br>";
+   
+
+    public static function ver_atributos($obj)
+    {
+        echo "<br>" . " Numero de cambio de color:" . self::$numero_cambio_color . "<br>";
         echo "Atributos:<br>";
-         if(isset($obj->color)){
-             echo "Color: ". $obj->color . " ";
-         };
-         if(isset($obj->peso)){
-            echo "Peso: ". $obj->peso . " ";
+
+        if (isset($obj->color)) {
+            echo "Color: " . $obj->color . " ";
         };
-        if(property_exists(get_class($obj), "numero_puertas")|| property_exists(get_parent_class($obj), "numero_puertas")){
-            echo "numero_puertas: ".  $obj->numero_puertas . " ";
-        };
-        if(property_exists(get_class($obj) , "cilindrada") || property_exists(get_parent_class($obj), "cilindrada")){
-            echo "cilindrada: ". $obj->cilindrada . " ";
-        };
-        if(property_exists(get_class($obj), "longitud") ||property_exists(get_parent_class($obj), "longitud") ){
-            echo "longitud: ". $obj->longitud . " ";
-        };
-        if(property_exists(get_class($obj), "numero_cadenas_nieve") || property_exists(get_parent_class($obj), "numero_cadenas_nieve")){
-            echo "numero_cadenas_nieve: ".  $obj->numero_cadenas_nieve . " ";
+        if (isset($obj->peso)) {
+            echo "Peso: " . $obj->peso . " ";
         };
 
+       self::property_exists_obj("numero_puertas",$obj);
+       
+       self::property_exists_obj("cilindrada",$obj);
+
+       self::property_exists_obj("longitud",$obj);
+
+       self::property_exists_obj("numero_cadenas_nieve",$obj);
+
+        
     }
+
+    public static function property_exists_obj($atributo , $obj){
+        if (property_exists(get_class($obj), $atributo)) {
+            echo $atributo.": " .  $obj->$atributo . " ";
+        } else {
+            $objCur= $obj;
+            while ($padre = get_parent_class($objCur)) {
+                if (property_exists($padre, $atributo)) {
+                    echo $atributo.": " .  $obj->$atributo . " ";
+                    break;
+                };
+                $objCur = $padre;
+            }
+        }
+
+    }
+
+    
+
+    
 }
