@@ -2,7 +2,7 @@
 
 
 class Eje extends Coche{
-    private string $p;
+    private int $p;
 
     public function __construct($color,$peso,$numero_puertas,$numero_cadenas_nieve,$p)
     {
@@ -27,8 +27,6 @@ class Eje extends Coche{
             parent::__set($name,$value);
         }       
     }
-
-    
 
     
 }
