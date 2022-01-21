@@ -19,8 +19,6 @@ class CuatroRuedas extends Vehiculo{
         }else{
             return parent::__get($name);
         }
-       
-  
     }
   
     public function __set($name, $value)
