@@ -7,6 +7,6 @@ function listar(){
 
 function listarUno(){
     require_once './models/librosModel.php';
-    $libros= getLibro(2);
+    $libros= getLibro($_GET['id']);
     include_once './views/librosView.php';
 }
