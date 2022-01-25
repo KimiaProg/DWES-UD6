@@ -26,11 +26,26 @@ class Local
     {
         if ($name == "area") {
             return $this->dimensiones->ancho * $this->dimensiones->largo;
-        } elseif ($name == "dimensiones") {
+        }else{
             return $this->$name;
         }
+        // elseif ($name == "dimensiones") {
     }
 
+    public static function ver($obj){
+        echo "<br>";
+        echo $obj->aforoSala;
+       
+        
+            
+        
+    }
+
+    public function __set($name, $value)
+    {
+        $this->$name = $value;
+           
+    }
 
     public function __toString()
     {

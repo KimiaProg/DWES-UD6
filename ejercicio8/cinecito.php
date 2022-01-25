@@ -15,4 +15,5 @@ foreach ($cines as $cine)
    echo $cine . '<br>';
 echo $copia;
 echo $cines[1];
-echo 'Área: ' . $copia->area . ' m2';
+Local::ver($copia); 
+echo 'Área: ' . $copia->numPlatantas . ' m2';
