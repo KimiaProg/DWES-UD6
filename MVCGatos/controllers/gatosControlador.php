@@ -27,25 +27,19 @@ function create()
         include_once "./models/gatosModel.php";
         $id = setGato(seguro($_POST["nombre"]), $_POST["dni"], $_POST["edad"], seguro($_POST["sexo"]), seguro($_POST["raza"]), $_POST["fechaAlta"], "ff");
         if ($cumplido == true) {
-            header("Location: ./views/gatosView.php");
+            header("Location: ./index.php");
             exit();
         } else {
-            $error = "Datos incorrectos o no se ha actualizado nada";
-        }    }
+            header("Location: ./views/gatosCrear.php?id=" . $id . "&error=si");
+        }
+    }
 }
 
 
 function update()
 {
     include_once "./models/gatosModel.php";
-    if (count($_GET) > 0) {
-        $id = $_GET["id"];
-        $gato = getGato($id);
-    } else {
-        $id = $_POST["id"];
-        $gato = getGato($id);
-    }
-
+    $id = $_GET["id"];
     if (count($_POST) > 0) {
         function seguro($valor)
         {
@@ -56,10 +50,10 @@ function update()
         }
         $cumplido = updateGato($id, seguro($_POST["nombre"]), $_POST["dni"], $_POST["edad"], seguro($_POST["sexo"]), seguro($_POST["raza"]), $_POST["fechaAlta"], "dd");
         if ($cumplido == true) {
-            header("Location: ./views/gatosView.php");
+            header("Location: ./index.php");
             exit();
         } else {
-            $error = "Datos incorrectos o no se ha actualizado nada";
+            header("Location: ./views/gatosUpdate.php?id=" . $id . "&error=si");
         }
     }
 }

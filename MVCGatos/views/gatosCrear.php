@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <?php
+        $error= "Datos incorrectos o no se ha actualizado nada";
+    ?>
     <form class="form-register" action="/DWS/DWES-UD6/MVCGatos/index.php?action=create" method="POST" enctype="multipart/form-data">
         <h2 class="form-titulo">Características:</h2>
         <div class="contenedor-inputs">
@@ -20,6 +23,11 @@
             <input type="date" name="fechaAlta" placeholder="Fecha de Alta" class="input-100" required>
             <input type="file" name="avatar" accept="image/png, image/jpeg" class="input-100">
             <input type="submit" value="Registrar" class="btn-enviar">
+            <?php
+            if(isset($_GET["error"])){
+                echo "<div>".$error."</div>";
+            }
+            ?>
         </div>
     </form>
 </body>
