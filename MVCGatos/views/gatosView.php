@@ -11,7 +11,7 @@
         <h1>Gatos:</h1>
         <?php if (!isset($_GET["action"]) || $_GET["action"] == "listar") {
         ?>
-            <a href="/DWS/DWES-UD6/MVCGatos/index.php?action=create">Crear Gato</a>
+            <a href="/DWS/DWES-UD6/MVCGatos/index.php?controller=gatos&action=create">Crear Gato</a>
     </div>
 
 <?php } ?>
@@ -40,9 +40,9 @@
             <td><?php echo $gato['raza'] ?></td>
             <td><?php echo $gato['fechaAlta'] ?></td>
             <td><?php echo $gato['foto'] ?></td>
-            <td><a href=<?php echo '/DWS/DWES-UD6/MVCGatos/index.php?action=listarUno&id=' . $gato["id"]; ?>>Details</a></td>
-            <td><a href=<?php echo '/DWS/DWES-UD6/MVCGatos/index.php?action=update&id=' . $gato["id"]; ?>>Edit</td>
-            <td><a href=<?php echo '/DWS/DWES-UD6/MVCGatos/index.php?action=delete&id=' . $gato["id"]; ?>>Borrar</a></td>
+            <td><a href=<?php echo '/DWS/DWES-UD6/MVCGatos/index.php?controller=gatos&action=listarUno&id=' . $gato["id"]; ?>>Details</a></td>
+            <td><a href=<?php echo '/DWS/DWES-UD6/MVCGatos/index.php?controller=gatos&action=update&id=' . $gato["id"]; ?>>Edit</td>
+            <td><a href=<?php echo '/DWS/DWES-UD6/MVCGatos/index.php?controller=gatos&action=delete&id=' . $gato["id"]; ?>>Delete</a></td>
         </tr>
 
     <?php

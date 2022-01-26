@@ -27,13 +27,13 @@ function create()
         include_once "./models/gatosModel.php";
         $cumplido = setGato(seguro($_POST["nombre"]), $_POST["dni"], $_POST["edad"], seguro($_POST["sexo"]), seguro($_POST["raza"]), $_POST["fechaAlta"], "ff");
         if ($cumplido == true) {
-            header("Location: ./index.php");
+            header("Location: ./index.php?controller=gatos");
             exit();
         } else {
-            header("Location: ./views/gatosCrear.php?id=" . $id . "&error=si");
+            header("Location: ./views/gatosForm.php?id=" . $id . "&error=si");
         }
     }else{
-        include_once "./views/gatosCrear.php";
+        include_once "./views/gatosForm.php";
     }
 }
 
@@ -53,14 +53,14 @@ function update()
         }
         $cumplido = updateGato($id, seguro($_POST["nombre"]), $_POST["dni"], $_POST["edad"], seguro($_POST["sexo"]), seguro($_POST["raza"]), $_POST["fechaAlta"], "dd");
         if ($cumplido == true) {
-            header("Location: ./index.php");
+            header("Location: ./index?controller=gatos.php");
             exit();
         } else {
-            header("Location: ./views/gatosUpdate.php?id=" . $id . "&error=si");
+            header("Location: ./views/gatosForm.php?id=" . $id . "&error=si");
         }
     }else{
         $gatos= getGato($id);
-        include_once "./views/gatosUpdate.php";
+        include_once "./views/gatosForm.php";
     }
     
    

@@ -1,8 +1,8 @@
 <?php
 
 define('CONTROLLERS_FOLDER', 'controllers/');
-define('DEFAULT_CONTROLLER', 'gatos');
-define('DEFAULT_ACTION', 'listar');
+define('DEFAULT_CONTROLLER', 'users');
+define('DEFAULT_ACTION', 'login');
 
 $controller = DEFAULT_CONTROLLER;
 if (!empty($_GET['controller'])) {
