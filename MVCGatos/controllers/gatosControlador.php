@@ -15,6 +15,7 @@ function listarUno()
 
 function create()
 {
+
     if (count($_POST) > 0) {
         function seguro($valor)
         {
@@ -23,15 +24,16 @@ function create()
             $valor = htmlspecialchars($valor);
             return $valor;
         }
-
         include_once "./models/gatosModel.php";
-        $id = setGato(seguro($_POST["nombre"]), $_POST["dni"], $_POST["edad"], seguro($_POST["sexo"]), seguro($_POST["raza"]), $_POST["fechaAlta"], "ff");
+        $cumplido = setGato(seguro($_POST["nombre"]), $_POST["dni"], $_POST["edad"], seguro($_POST["sexo"]), seguro($_POST["raza"]), $_POST["fechaAlta"], "ff");
         if ($cumplido == true) {
             header("Location: ./index.php");
             exit();
         } else {
             header("Location: ./views/gatosCrear.php?id=" . $id . "&error=si");
         }
+    }else{
+        include_once "./views/gatosCrear.php";
     }
 }
 
@@ -40,7 +42,8 @@ function update()
 {
     include_once "./models/gatosModel.php";
     $id = $_GET["id"];
-    if (count($_POST) > 0) {
+   
+    if (isset($_POST)  && count($_POST) > 0) {
         function seguro($valor)
         {
             $valor = strip_tags($valor);
@@ -55,7 +58,12 @@ function update()
         } else {
             header("Location: ./views/gatosUpdate.php?id=" . $id . "&error=si");
         }
+    }else{
+        $gatos= getGato($id);
+        include_once "./views/gatosUpdate.php";
     }
+    
+   
 }
 
 
@@ -64,6 +72,11 @@ function delete()
     $id = $_GET["id"];
     include_once "./models/gatosModel.php";
     $cumplido = eliminarGato($id);
-    $error = 'Se ha borrado el gato con el id: ' . $id;
-    echo $error;
+    if($cumplido){
+        header("Location: ./views/gatosBorrar.php?id=" . $id . "&error=no");
+
+    }else{
+        header("Location: ./views/gatosBorrar.php?id=" . $id . "&error=si");
+    }
+
 }
