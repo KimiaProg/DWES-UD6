@@ -27,7 +27,7 @@ function create()
         include_once "./models/gatosModel.php";
         $cumplido = setGato(seguro($_POST["nombre"]), $_POST["dni"], $_POST["edad"], seguro($_POST["sexo"]), seguro($_POST["raza"]), $_POST["fechaAlta"], "ff");
         if ($cumplido == true) {
-            header("Location: ./index.php?controller=gatos");
+            header("Location: ./index.php?controller=gatos&action=listar");
             exit();
         } else {
             header("Location: ./views/gatosForm.php?id=" . $id . "&error=si");
@@ -53,7 +53,7 @@ function update()
         }
         $cumplido = updateGato($id, seguro($_POST["nombre"]), $_POST["dni"], $_POST["edad"], seguro($_POST["sexo"]), seguro($_POST["raza"]), $_POST["fechaAlta"], "dd");
         if ($cumplido == true) {
-            header("Location: ./index?controller=gatos.php");
+            header("Location: ./index.php?controller=gatos&action=listar");
             exit();
         } else {
             header("Location: ./views/gatosForm.php?id=" . $id . "&error=si");
