@@ -3,6 +3,8 @@
 <head>
     <title>Catálogo libros</title>
     <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+
 
 </head>
 

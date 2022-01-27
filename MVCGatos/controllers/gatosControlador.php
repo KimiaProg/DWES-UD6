@@ -1,4 +1,9 @@
 <?php
+session_start();
+
+if (!isset($_SESSION["logueado"])) {
+    header("Location: ./index.php");
+}
 function listar()
 {
     require_once './models/gatosModel.php';
@@ -8,6 +13,7 @@ function listar()
 
 function listarUno()
 {
+
     require_once './models/gatosModel.php';
     $gatos = getGato($_GET['id']);
     include_once './views/gatosView.php';
@@ -32,7 +38,7 @@ function create()
         } else {
             header("Location: ./views/gatosForm.php?id=" . $id . "&error=si");
         }
-    }else{
+    } else {
         include_once "./views/gatosForm.php";
     }
 }
@@ -40,9 +46,10 @@ function create()
 
 function update()
 {
+
     include_once "./models/gatosModel.php";
     $id = $_GET["id"];
-   
+
     if (isset($_POST)  && count($_POST) > 0) {
         function seguro($valor)
         {
@@ -58,25 +65,24 @@ function update()
         } else {
             header("Location: ./views/gatosForm.php?id=" . $id . "&error=si");
         }
-    }else{
-        $gatos= getGato($id);
+    } else {
+        $gatos = getGato($id);
         include_once "./views/gatosForm.php";
     }
-    
-   
 }
 
 
 function delete()
 {
+    if (!isset($_SESSION["logueado"])) {
+        header("Location: ./index.php");
+    }
     $id = $_GET["id"];
     include_once "./models/gatosModel.php";
     $cumplido = eliminarGato($id);
-    if($cumplido){
+    if ($cumplido) {
         header("Location: ./views/gatosBorrar.php?id=" . $id . "&error=no");
-
-    }else{
+    } else {
         header("Location: ./views/gatosBorrar.php?id=" . $id . "&error=si");
     }
-
 }

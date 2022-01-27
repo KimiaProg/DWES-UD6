@@ -3,6 +3,12 @@
 <head>
     <title>Catálogo libros</title>
     <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css" />
+     <!-- Latest compiled and minified CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"> </script>
+    <link rel="stylesheet" href="./css/main.css" />
+
 
 </head>
 
@@ -15,8 +21,8 @@
     </div>
 
 <?php } ?>
-<table border="1">
-    <tr>
+<table class="table mx-5 w-50 mt-3">
+    <thead class="table-dark ">
         <th>Nombre</th>
         <th>DNI</th>
         <th>Edad</th>
@@ -27,7 +33,7 @@
         <th>Detalle</th>
         <th>Editar</th>
         <th>Borrar</th>
-    </tr>
+    </thead>
 
     <?php
     foreach ($gatos as $gato) {
