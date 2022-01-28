@@ -30,8 +30,14 @@ function create()
             $valor = htmlspecialchars($valor);
             return $valor;
         }
+        $avatar = $_FILES["avatar"]["name"];
+        $temp = $_FILES['avatar']['tmp_name'];
+        if (move_uploaded_file($temp, './images/' . $avatar)) {
+            //Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
+            chmod('./images/' . $avatar, 0777);
+        }
         include_once "./models/gatosModel.php";
-        $cumplido = setGato(seguro($_POST["nombre"]), $_POST["dni"], $_POST["edad"], seguro($_POST["sexo"]), seguro($_POST["raza"]), $_POST["fechaAlta"], "ff");
+        $cumplido = setGato(seguro($_POST["nombre"]), $_POST["dni"], $_POST["edad"], seguro($_POST["sexo"]), seguro($_POST["raza"]), $_POST["fechaAlta"], $avatar);
         if ($cumplido == true) {
             header("Location: ./index.php?controller=gatos&action=listar");
             exit();
@@ -58,7 +64,14 @@ function update()
             $valor = htmlspecialchars($valor);
             return $valor;
         }
-        $cumplido = updateGato($id, seguro($_POST["nombre"]), $_POST["dni"], $_POST["edad"], seguro($_POST["sexo"]), seguro($_POST["raza"]), $_POST["fechaAlta"], "dd");
+        $avatar = $_FILES["avatar"]["name"];
+        $temp = $_FILES['avatar']['tmp_name'];
+        
+        if (move_uploaded_file($temp, './images/' . $avatar)) {
+            //Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
+            chmod('./images/' . $avatar, 0777);
+        }
+        $cumplido = updateGato($id, seguro($_POST["nombre"]), $_POST["dni"], $_POST["edad"], seguro($_POST["sexo"]), seguro($_POST["raza"]), $_POST["fechaAlta"], $avatar);
         if ($cumplido == true) {
             header("Location: ./index.php?controller=gatos&action=listar");
             exit();
@@ -80,6 +93,7 @@ function delete()
     $id = $_GET["id"];
     include_once "./models/gatosModel.php";
     $cumplido = eliminarGato($id);
+    
     if ($cumplido) {
         header("Location: ./views/gatosBorrar.php?id=" . $id . "&error=no");
     } else {
