@@ -95,8 +95,8 @@ function delete()
     $cumplido = eliminarGato($id);
     
     if ($cumplido) {
-        header("Location: ./views/gatosBorrar.php?id=" . $id . "&error=no");
+        // header("Location: ./views/gatosBorrar.php?id=" . $id . "&error=no");
     } else {
-        header("Location: ./views/gatosBorrar.php?id=" . $id . "&error=si");
+        // header("Location: ./views/gatosBorrar.php?id=" . $id . "&error=si");
     }
 }

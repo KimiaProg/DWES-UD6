@@ -59,9 +59,9 @@
     <div class="container">
         <form class="form-register w-50 mx-5" action=<?php
                                                         if (isset($_GET["action"]) && $_GET["action"] == "create") {
-                                                            echo "/DWS/DWES-UD6/MVCGatos/index.php?controller=gatos&action=create";
+                                                            echo "./index.php?controller=gatos&action=create";
                                                         } else if (isset($_GET["action"]) && $_GET["action"] == "update") {
-                                                            echo '/DWS/DWES-UD6/MVCGatos/index.php?controller=gatos&action=update&id=' . $_GET["id"];
+                                                            echo './index.php?controller=gatos&action=update&id=' . $_GET["id"];
                                                         } ?> method="POST" enctype="multipart/form-data">
             <h2 class="form-titulo mt-5">Características:</h2>
             <div class="contenedor-inputs">

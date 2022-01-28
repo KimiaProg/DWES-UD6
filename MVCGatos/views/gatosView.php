@@ -8,7 +8,8 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"> </script>
     <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css" />
-    <script src="delete.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./views/delete.js"></script>
     <link rel="stylesheet" href="./css/main.css" />
 
 
@@ -62,7 +63,7 @@
             <?php if (!isset($_GET["action"]) || $_GET["action"] == "listar") {
             ?>
                 <div class="col-2 bg-success d-flex align-items-center" style="border-radius: 10px;height:35px; width: 111px">
-                    <a class="text-light text-decoration-none" href="/DWS/DWES-UD6/MVCGatos/index.php?controller=gatos&action=create">Crear Gato</a>
+                    <a class="text-light text-decoration-none" href="./index.php?controller=gatos&action=create">Crear Gato</a>
                 </div>
 
         </div>
@@ -85,7 +86,7 @@
         <?php
         foreach ($gatos as $gato) {
         ?>
-            <tr>
+            <tr id=<?php echo $gato["id"]; ?>>
                 <td class="item"><?php echo $gato['nombre'] ?></td>
                 <td class="item"><?php echo $gato['dni'] ?></td>
                 <td class="item"><?php echo $gato['edad'] ?></td>
@@ -93,9 +94,10 @@
                 <td class="item"><?php echo $gato['raza'] ?></td>
                 <td class="item"><?php echo $gato['fechaAlta'] ?></td>
                 <td class="item"><?php echo $gato['foto'] ?></td>
-                <td class="item"><a href=<?php echo '/DWS/DWES-UD6/MVCGatos/index.php?controller=gatos&action=listarUno&id=' . $gato["id"]; ?>>Details</a></td>
-                <td class="item"><a href=<?php echo '/DWS/DWES-UD6/MVCGatos/index.php?controller=gatos&action=update&id=' . $gato["id"]; ?>>Edit</td>
-                <td class="item"><a class="delete" href=<?php echo '/DWS/DWES-UD6/MVCGatos/index.php?controller=gatos&action=delete&id=' . $gato["id"]; ?>>Delete</a></td>
+                <td class="item"><a href=<?php echo './index.php?controller=gatos&action=listarUno&id=' . $gato["id"]; ?>>Details</a></td>
+                <td class="item"><a href=<?php echo './index.php?controller=gatos&action=update&id=' . $gato["id"]; ?>>Edit</td>
+                <td class="item"><a class="delete" >Delete</a></td>
+                <!--<?php echo './index.php?controller=gatos&action=delete&id=' . $gato["id"]; ?>-->
             </tr>
 
         <?php

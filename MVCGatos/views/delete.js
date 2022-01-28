@@ -1,17 +1,15 @@
 $(document).ready(function () {
-    $('.delete').click(function (e) {
-        
-        var $removeBtn = $(this);
-        var id = $removeBtn.data('id');
+	$(".delete").click(function (e) {
+		var $removeBtn = $(this);
+		var id = $removeBtn.parent().parent().attr("id");
+		var a= new XMLHttpRequest();
+		a.onreadystatechange= function(){
+			if(a.readyState== 4 && a.status ==200){
+				$removeBtn.parent().parent().remove();
+			}
+		}
+		a.open("DELETE","./index.php?controller=gatos&action=delete&id="+id, true );
+		a.send();
 
-        $.ajax({
-            type: "DELETE",
-            url: "./index?controller=gatos&action=delete&id=". id,  // or whatever is the URL to the destroy action in the controller
-            success: function (data) {
-                $(this).parent().remove(); // assumes that the wrapper for each line item is cart-data-details__total
-            }               
-        });
-
-        return false;
-    });
+	});
 });

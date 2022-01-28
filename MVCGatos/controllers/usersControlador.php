@@ -4,7 +4,7 @@ function login(){
     $error = '';
     session_start();
     if (isset($_SESSION["logueado"])) {
-        header("Location: /DWS/DWES-UD6/MVCGatos/index.php?controller=gatos&action=listar");
+        header("Location: ./index.php?controller=gatos&action=listar");
     } else {
         if (count($_POST) > 0) {
             function seguro($valor)
@@ -20,7 +20,7 @@ function login(){
             if ($datosPers != '') {
                 if (password_verify($pass, $datosPers[0]["password"])) {
                     $_SESSION["logueado"] = true;
-                    header("Location: /DWS/DWES-UD6/MVCGatos/index.php?controller=gatos&action=listar");
+                    header("Location: ./index.php?controller=gatos&action=listar");
                     exit;
                 } else {
                     $error = "Contraseña incorrecta o el usuario no existe";
