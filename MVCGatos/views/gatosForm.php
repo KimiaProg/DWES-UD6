@@ -52,8 +52,6 @@
     </nav>
 
     <?php
-
-
     $error = "Datos incorrectos o no se ha actualizado nada";
     ?>
     <div class="container">

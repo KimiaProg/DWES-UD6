@@ -16,7 +16,8 @@ function listarUno()
 
     require_once './models/gatosModel.php';
     $gatos = getGato($_GET['id']);
-    include_once './views/gatosView.php';
+    echo json_encode($gatos);
+    //include_once './views/gatosView.php';
 }
 
 function create()
@@ -42,7 +43,7 @@ function create()
             header("Location: ./index.php?controller=gatos&action=listar");
             exit();
         } else {
-            header("Location: ./views/gatosForm.php?id=" . $id . "&error=si");
+            header("Location: ./index.php?controller=gatos&action=create&error=si");
         }
     } else {
         include_once "./views/gatosForm.php";
@@ -76,7 +77,7 @@ function update()
             header("Location: ./index.php?controller=gatos&action=listar");
             exit();
         } else {
-            header("Location: ./views/gatosForm.php?id=" . $id . "&error=si");
+            header("Location: ./index.php?controller=gatos&action=update&id=" . $id . "&error=si");
         }
     } else {
         $gatos = getGato($id);
@@ -93,10 +94,4 @@ function delete()
     $id = $_GET["id"];
     include_once "./models/gatosModel.php";
     $cumplido = eliminarGato($id);
-    
-    if ($cumplido) {
-        // header("Location: ./views/gatosBorrar.php?id=" . $id . "&error=no");
-    } else {
-        // header("Location: ./views/gatosBorrar.php?id=" . $id . "&error=si");
-    }
 }

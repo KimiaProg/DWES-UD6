@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"> </script>
     <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./views/delete.js"></script>
+    <script src="./views/view.js"></script>
     <link rel="stylesheet" href="./css/main.css" />
 
 
@@ -69,6 +69,27 @@
         </div>
 
     <?php } ?>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Understood</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <table class="table mx-5 w-50 mt-3">
         <thead class="table-dark ">
             <th>Nombre</th>
@@ -94,10 +115,9 @@
                 <td class="item"><?php echo $gato['raza'] ?></td>
                 <td class="item"><?php echo $gato['fechaAlta'] ?></td>
                 <td class="item"><?php echo $gato['foto'] ?></td>
-                <td class="item"><a href=<?php echo './index.php?controller=gatos&action=listarUno&id=' . $gato["id"]; ?>>Details</a></td>
+                <td class="item"><a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="details">Details</a></td>
                 <td class="item"><a href=<?php echo './index.php?controller=gatos&action=update&id=' . $gato["id"]; ?>>Edit</td>
-                <td class="item"><a class="delete" >Delete</a></td>
-                <!--<?php echo './index.php?controller=gatos&action=delete&id=' . $gato["id"]; ?>-->
+                <td class="item"><a class="delete">Delete</a></td>
             </tr>
 
         <?php
