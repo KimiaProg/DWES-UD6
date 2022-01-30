@@ -24,11 +24,13 @@ $(document).ready(function () {
     var $detailsbtn = $(this);
     var id = $detailsbtn.parent().parent().attr("id");
     var a = new XMLHttpRequest();
-    function ImageExist(url) {
+    /*function ImageExist(url) {
+      var retorno=false;
       var img = new Image();
-      img.src = url;
+      img.setAttribute("src",url);
+      
       return img.height != 0;
-    }
+    }*/
     a.onreadystatechange = function (res) {
       if (a.readyState == 4 && a.status == 200) {
         var gato = JSON.parse(res.currentTarget.responseText);
@@ -39,11 +41,11 @@ $(document).ready(function () {
         $(".modal-body").append("<h5>Sexo: " + gato[0].sexo + "</h5>");
         $(".modal-body").append("<h5>Raza: " + gato[0].raza + "</h5>");
         $(".modal-body").append("<h5>fechaAlta: " + gato[0].fechaAlta + "</h5>");
-		if(ImageExist('./images/' + gato[0].foto)){
-			$(".modal-body").append(
-				"<img src='./images/" + gato[0].foto + "' width='200px'>"
-			  );
-		}
+        if(gato[0].foto!=""){
+          $(".modal-body").append(
+            "<img alt='ImageNotFound' src='./images/" + gato[0].foto + "' width='200px'>"
+          );
+        }
         
       }
     };
