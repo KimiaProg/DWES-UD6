@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    $(".sugerencias").hide();
+
     $("#inputSearch").on("input", search);
 
     function search(e) {
@@ -12,16 +14,31 @@ $(document).ready(function () {
                     return gato["nombre"].startsWith(nombre);
                 });
 
-                if ($("#inputSearch").attr("value") != '') {
+                if (document.getElementById("inputSearch").value != '') {
                     $(".sugerencias ul").empty();
                     [...gatosFiltardos].forEach(gato => {
                         var li = document.createElement("li");
                         li.appendChild(document.createTextNode(gato["nombre"]));
+                        $(li).attr("style","border-bottom:1px solid black");
                         $(".sugerencias ul").append(li);
+                        $(li).on("click",function(e){
+                            $("#inputSearch").val($(this).text());
+                            $(this).css("background-color","grey");
+                            $(".sugerencias").hide();
+                        });
+
+                        $(li).hover(function(e){
+                            $(this).css("background-color","grey");
+                        },function(e){
+                            $(this).css("background-color","bisque");
+                        } );
+
+                      
                     });
-                    //$(".sugerencias").toggle();
+                    $(".sugerencias").slideDown();
                 }else{
                     $(".sugerencias ul").empty();
+                    $(".sugerencias").slideUp();
                 }
 
 
@@ -33,6 +50,8 @@ $(document).ready(function () {
             true
         );
         a.send();
+
+   
 
     }
 
