@@ -23,6 +23,7 @@ function create()
 {
 
     if (count($_POST) > 0) {
+        include_once "./models/gatosModel.php";
         function seguro($valor)
         {
             $valor = strip_tags($valor);
@@ -36,7 +37,6 @@ function create()
             //Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
             chmod('./images/' . $avatar, 0777);
         }
-        include_once "./models/gatosModel.php";
         $cumplido = setGato(seguro($_POST["nombre"]), $_POST["dni"], $_POST["edad"], seguro($_POST["sexo"]), seguro($_POST["raza"]), $_POST["fechaAlta"], $avatar);
         if ($cumplido == true) {
             header("Location: ./index.php?controller=gatos&action=listar");
@@ -63,7 +63,7 @@ function update()
             $valor = htmlspecialchars($valor);
             return $valor;
         }
-        //En el caso de que no haya subido ninguna imagen (no  la imagen), subiremos la misma imagen anterior de nuevo por defecto es una cadena vacia
+        //En el caso de que no haya subido ninguna imagen (no quiere cambiar la imagen), subiremos la misma imagen anterior de nuevo por defecto es una cadena vacia
         if ($_FILES["avatar"]["name"] != '') {
             $avatar = $_FILES["avatar"]["name"];
             $temp = $_FILES['avatar']['tmp_name'];
@@ -90,9 +90,6 @@ function update()
 
 function delete()
 {
-    if (!isset($_SESSION["logueado"])) {
-        header("Location: ./index.php");
-    }
     $id = $_GET["id"];
     include_once "./models/gatosModel.php";
     $cumplido = eliminarGato($id);

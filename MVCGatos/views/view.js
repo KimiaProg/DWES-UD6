@@ -21,8 +21,8 @@ $(document).ready(function () {
   });
 
   $(".details").click(function (e) {
-    var $detailsbtn = $(this);
-    var id = $detailsbtn.parent().parent().attr("id");
+    var detailsbtn = $(this);
+    var id = detailsbtn.parent().parent().attr("id");
     var a = new XMLHttpRequest();
     /*function ImageExist(url) {
       var retorno=false;

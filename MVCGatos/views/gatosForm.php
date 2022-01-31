@@ -52,7 +52,6 @@
     </nav>
 
     <?php
-    $error = "Datos incorrectos o no se ha actualizado nada";
     ?>
     <div class="container">
         <form class="form-register w-50 mx-5" action=<?php
@@ -85,6 +84,7 @@
                 <input type="submit" class="mt-2" value="Registrar" class="btn-enviar">
                 <?php
                 if (isset($_GET["error"])) {
+                    $error = "Datos incorrectos o no se ha actualizado nada";
                     echo "<div class='text-danger'>" . $error . "</div>";
                 }
                 ?>
