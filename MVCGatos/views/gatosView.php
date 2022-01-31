@@ -49,7 +49,7 @@
                     </ul>
                     <div>
                         <form class="d-flex" action=<?php echo "./index.php?controller=gatos&action=search" ?> method="POST">
-                            <input name="input" id="inputSearch" class="form-control me-2" type="text" aria-label="Search">
+                            <input autocomplete="off" name="input" id="inputSearch" class="form-control me-2" type="text" aria-label="Search">
                             <input class="btn btn-outline-danger btnSearch" type="submit" value="Search">
 
                         </form>
