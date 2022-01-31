@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="./fontawesome-free-5.15.4-web/css/all.min.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="./views/view.js"></script>
+        <script src="./views/search.js"></script>
+
         <link rel="stylesheet" href="./css/main.css" />
 
 
@@ -44,15 +46,17 @@
                                 </ul>
                             </li>
                         </ul>
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" aria-label="Search">
-                            <button class="btn btn-outline-danger" type="submit">Search</button>
+                        <form class="d-flex" action=<?php echo "./index.php?controller=gatos&action=search"?> method="POST" >
+                            <input value='' name="input" id="inputSearch" class="form-control me-2" type="search" aria-label="Search">
+                            <input class="btn btn-outline-danger btnSearch" type="submit" value="Search">
+
                         </form>
                     </div>
                 </div>
             </nav>
         </div>
 
+        <div class="sugerencias"><ul></ul></div>
 
         <div class="container-fluid mt-5 d-flex flex-column align-items-center">
             <div class="row d-flex align-items-center w-75">

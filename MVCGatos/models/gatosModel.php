@@ -38,6 +38,26 @@ function getGato($id)
    return $gatos;
 }
 
+function getGatoNombre($nombre)
+{
+   try {
+      $a = 1;
+      $conexion = getConnection();
+      $sql = $conexion->prepare("SELECT id,nombre, dni,edad,sexo,raza,fechaAlta,foto FROM gatos where nombre= :nombre");
+      $sql->bindParam(":nombre", $nombre);
+      $sql->execute();
+
+      $gatos = [];
+      while ($fila = $sql->fetch(PDO::FETCH_ASSOC)) {
+         $gatos[] = $fila;
+      }
+   } catch (PDOException $e) {
+      echo $e;
+   }
+   $conexion = null;
+   return $gatos;
+}
+
 
 function setGato($nombre, $dni,$edad,$sexo,$raza,$fechaAlta,$foto){
    try {
